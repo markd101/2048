@@ -28,9 +28,9 @@ function LocalStorageManager() {
 
 LocalStorageManager.prototype.localStorageSupported = function () {
   var testKey = "test";
+  var storage = window.localStorage;
 
   try {
-    var storage = window.localStorage;
     storage.setItem(testKey, "1");
     storage.removeItem(testKey);
     return true;
@@ -61,3 +61,7 @@ LocalStorageManager.prototype.setGameState = function (gameState) {
 LocalStorageManager.prototype.clearGameState = function () {
   this.storage.removeItem(this.gameStateKey);
 };
+
+LocalStorageManager.prototype.clearHistory = function () {
+  this.storage.clear();
+}
